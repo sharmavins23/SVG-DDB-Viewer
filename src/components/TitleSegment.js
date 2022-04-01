@@ -8,9 +8,12 @@ export default function TitleSegment({ svgTitle }) {
     return (
         <>
             <Title>SVG from a Decentralized Database Viewer</Title>
+
             <Title level={2}>
                 Current display: <b>{svgTitle}</b>
             </Title>
+
+            {/* TODO: Add selector infobox */}
         </>
     );
 }
