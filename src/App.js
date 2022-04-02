@@ -10,6 +10,7 @@ export default function App() {
     // Contains all individual components
 
     // States
+    // Current SVG displayed
     const [svg, setSVG] = useState({
         // Default state
         title: "Ethereum Logo",
@@ -32,9 +33,21 @@ export default function App() {
             </svg>`,
     });
 
+    // List of SVGs displayed
+    const [svgNameList, setSVGNameList] = useState([
+        // Default list of SVGs
+        "Ethereum Logo",
+    ]);
+
     // Callback function to update the SVG within a child component
     const updateSVG = (newSVG) => {
-        setSVG(newSVG);
+        setSVG(newSVG); // For now, just change the SVG on the page
+    };
+
+    // Callback function to update the SVG from the selector
+    const changeCurrentSVG = (selectionTitle) => {
+        console.log(selectionTitle);
+        setSVGNameList([selectionTitle]);
     };
 
     return (
@@ -43,7 +56,11 @@ export default function App() {
                 textAlign: "center", // How in the hell does this work
             }}
         >
-            <TitleSegment svgTitle={svg.title} />
+            <TitleSegment
+                svgTitle={svg.title}
+                svgNameList={svgNameList}
+                changeCurrentSVG={changeCurrentSVG}
+            />
             <Divider />
             <Viewer svgData={svg.svg} />
             <Divider />

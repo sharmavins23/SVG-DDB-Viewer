@@ -54,7 +54,7 @@ export default function SVGSelector({ updateSVG }) {
                         },
                     ]}
                 >
-                    <Input.TextArea />
+                    <Input.TextArea rows={15} />
                 </Form.Item>
                 <Form.Item
                     wrapperCol={{
