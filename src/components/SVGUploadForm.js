@@ -6,7 +6,8 @@ const isSVG = require("is-svg");
 // SVG upload form container
 export default function SVGUploadForm({ updateSVG }) {
     // Contains code for SVG upload form
-    const [form] = Form.useForm();
+
+    const [form] = Form.useForm(); // Input form for SVG upload
 
     // Handle upload form
     const onSubmit = (formData) => {
@@ -38,6 +39,7 @@ export default function SVGUploadForm({ updateSVG }) {
 
     return (
         <>
+            {/* Overarching form structure */}
             <Form
                 name="svg-upload-form"
                 form={form}
@@ -48,6 +50,7 @@ export default function SVGUploadForm({ updateSVG }) {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
+                {/* Title input segment for form */}
                 <Form.Item
                     label="Title"
                     name="title"
@@ -60,6 +63,8 @@ export default function SVGUploadForm({ updateSVG }) {
                 >
                     <Input />
                 </Form.Item>
+
+                {/* SVG data input segment */}
                 <Form.Item
                     label="SVG"
                     name="svg"
@@ -72,6 +77,8 @@ export default function SVGUploadForm({ updateSVG }) {
                 >
                     <Input.TextArea rows={15} />
                 </Form.Item>
+
+                {/* Submit button */}
                 <Form.Item
                     wrapperCol={{
                         offset: 8,

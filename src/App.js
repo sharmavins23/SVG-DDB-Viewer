@@ -8,7 +8,7 @@ import Viewer from "./components/Viewer";
 import SVGUploadForm from "./components/SVGUploadForm";
 
 export default function App() {
-    // Contains all individual components
+    // Contains all individual components as well as GUN instance and control
 
     // Initialize gun
     const gun = GUN();
@@ -72,6 +72,7 @@ export default function App() {
         });
     };
 
+    // Returns a JSX component for the overall application
     return (
         <div
             style={{

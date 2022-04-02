@@ -2,7 +2,10 @@
 import React from "react";
 
 // Viewer segment container
-export default function SVGSelector({ svgData }) {
+export default function Viewer({ svgData }) {
+    // Contains the SVG display structure for the application
+
+    // Returns a JSX component for the SVG display
     return (
         <>
             <img
