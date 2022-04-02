@@ -4,19 +4,34 @@ import { Form, Input, Button } from "antd";
 const isSVG = require("is-svg");
 
 // SVG upload form container
-export default function SVGSelector({ updateSVG }) {
-    const onSubmit = (values) => {
+export default function SVGUploadForm({ updateSVG }) {
+    // Contains code for SVG upload form
+    const [form] = Form.useForm();
+
+    // Handle upload form
+    const onSubmit = (formData) => {
+        // Construct the new SVG from the form data
         let newSVG = {
-            title: values.title,
-            svg: values.svg,
+            title: formData.title,
+            svg: formData.svg,
         };
 
         // Check if the SVG is actually real
         if (isSVG(newSVG.svg)) {
             updateSVG(newSVG);
+
+            // Alert the user that the SVG has been submitted
+            alert(`SVG ${newSVG.title} has been submitted to GUN.`);
+        } else {
+            // Alert the user that the SVG is of invalid format
+            alert(`${newSVG.title} is not a valid SVG.`);
         }
+
+        // Clear the form data boxes
+        form.resetFields();
     };
 
+    // If the SVG is not valid, alert the user
     const onFinishFailed = (errorInfo) => {
         console.log("Failed SVG input:", errorInfo);
     };
@@ -25,6 +40,7 @@ export default function SVGSelector({ updateSVG }) {
         <>
             <Form
                 name="svg-upload-form"
+                form={form}
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 8 }}
                 initialValues={{ remember: false }}
