@@ -1,5 +1,6 @@
 // Imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Divider } from "antd";
 // Components
 import TitleSegment from "./components/TitleSegment";
 import Viewer from "./components/Viewer";
@@ -31,6 +32,11 @@ export default function App() {
             </svg>`,
     });
 
+    // Callback function to update the SVG within a child component
+    const updateSVG = (newSVG) => {
+        setSVG(newSVG);
+    };
+
     return (
         <div
             style={{
@@ -38,8 +44,10 @@ export default function App() {
             }}
         >
             <TitleSegment svgTitle={svg.title} />
+            <Divider />
             <Viewer svgData={svg.svg} />
-            <SVGUploadForm />
+            <Divider />
+            <SVGUploadForm updateSVG={updateSVG} />
         </div>
     );
 }
